@@ -16,7 +16,30 @@ for ($i = 0; $i < count($users); $i++) {
     echo $users[$i];
     echo "<br/>";
 }
-// Associative Array
+// Associative Array (Kinda Map, key value pair)
+$userDetails = [
+    "name" => "Hakim",
+    "age" => 21,
+    "language" => ["Java", "JS", "PHP"],
+    "title" => "Web Developer",
+    "city" => "Kushtia"
+];
+echo "<br/>";
+
+foreach ($userDetails as $key => $data) {
+    if (is_array($data)) {
+        echo $key . ": ";
+        foreach ($data as $d) :
+            echo $d;
+            echo ", ";
+        endforeach;
+        echo "<br/>";
+        continue;
+    }
+
+    echo $key . ":" . $data . "<br/>";
+}
+
 // Multidimensional Array
 
 
