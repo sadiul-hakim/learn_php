@@ -6,16 +6,37 @@
 $arr = [1, 2, 3, true, "Hi"];
 
 // Index Array
-$users = ["Hakim", "Ashik", "None", "Rakib"];
-$users2 = array("Hakim", "Ashik", "Rakib");
-echo $users[1];
+const users = ["Hakim", "Ashik", "None", "Rakib"];
+const users2 = array("Hakim", "Ashik", "Rakib");
+echo users[1];
 echo "<br/>";
 
 // loop
-for ($i = 0; $i < count($users); $i++) {
-    echo $users[$i];
+for ($i = 0; $i < count(users); $i++) {
+    echo users[$i];
     echo "<br/>";
 }
+
+// ForEach loop
+// 1. 
+echo "------------------------------<br/>";
+foreach (users as $u) {
+
+    if ($u === "None") {
+        continue;
+    }
+    echo $u . "<br/>";
+}
+// 2.
+echo "------------------------------<br/>";
+foreach (users as $u) :
+
+    if ($u === "None") {
+        continue;
+    }
+    echo $u . "<br/>";
+endforeach;
+
 // Associative Array (Kinda Map, key value pair)
 $userDetails = [
     "name" => "Hakim",
@@ -41,24 +62,24 @@ foreach ($userDetails as $key => $data) {
 }
 
 // Multidimensional Array
+$usersArr = [
+    [1, "Hakim", "Backend"],
+    [2, "Jisan Mia", "Frontend"]
+];
 
+echo "<pre>";
+print_r($usersArr);
+echo "<pre>";
 
-// ForEach loop
-// 1. 
-echo "------------------------------<br/>";
-foreach ($users as $u) {
+// Actions
 
-    if ($u === "None") {
-        continue;
-    }
-    echo $u . "<br/>";
-}
-// 2.
-echo "------------------------------<br/>";
-foreach ($users as $u) :
+$Array = [];
+$Array[0] = 1;
+$Array[1] = 2;
+array_push($Array, 3, 4, 5); // Adds at the end
+print_r($Array);
 
-    if ($u === "None") {
-        continue;
-    }
-    echo $u . "<br/>";
-endforeach;
+array_pop($Array); // removes last
+print_r($Array);
+array_splice($Array,2); // removes to from last
+print_r($Array);
