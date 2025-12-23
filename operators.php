@@ -4,7 +4,7 @@
     // +, -, *, /, %, **
     //echo 10 ** 2; // Power
     // 2. Assignment operators
-    // =, +=, -=, *=, /=, %=, **=
+    // =, +=, -=, *=, /=, %=, **=, .=
     // 3. Comparison operators
     // == (Equal), === (Identical, same type), !=, <> (Not Equal), !== (Not identical), >, <, >=, <=, <=> (Spaceship, returns -1,0,1. -1 is less that, 0 is equals, 1 is bigger than)
         echo var_dump(10 == "10");
@@ -31,5 +31,4 @@
     $fullname.=$lastName;
     echo $fullname."<br/>";
     // 7. Array operators
-    // 8. Assignment operators
 ?>
