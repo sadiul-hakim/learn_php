@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data</title>
+</head>
+<body>
+    <form action="./form.php" method="post">
+        <div>
+            <label for="name">Name</label> <br/>
+            <input type="text" name="name" id="name"/>
+        </div> <br/>
+        <div>
+            <label for="email">Email</label> <br/>
+            <input type="email" name="email" id="email"/>
+        </div> <br/>
+        <div>
+            <label for="password">Password</label> <br/>
+            <input type="password" name="password" id="password"/>
+        </div> <br/>
+        <div>
+            <label for="date_of_birth">Date Of Birth</label> <br/>
+            <input type="date" name="date_of_birth" id="date_of_birth"/>
+        </div> <br/>
+        <div>
+            <label for="languages">Languages</label> <br/>
+            <select name="languages" id="Languages">
+                <option value="Bengali">Bengali</option>
+                <option value="English">English</option>
+                <option value="Urdu">Urdu</option>
+                <option value="Chinesse">Chinesse</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Hindi">Hindi</option>
+            </select>
+        </div> <br/>
+        <div>
+            <label for="bio">Bio</label> <br/>
+            <textarea name="bio" id="bio">
+
+            </textarea>
+        </div> <br/>
+        <div>
+            <label for="gender">Gender</label><br/>
+            <input type="radio" name="gender" id="gender" value="male"/> Male
+            <input type="radio" name="gender" id="gender"  value="female"/> Female
+        </div> <br/>
+        <div>
+            <input type="checkbox" name="aggree_terms" id="aggree_terms"/>
+            Aggree with terms and conditions.
+        </div> <br/>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
