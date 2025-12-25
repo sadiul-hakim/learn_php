@@ -2,6 +2,10 @@
 
 require_once("./student_service.php");
 
+if(isset($_GET['sId'])){
+    deleteStudent($_GET['sId']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +31,7 @@ require_once("./student_service.php");
                 <th>Batch</th>
                 <th>City</th>
                 <th>Year</th>
+                <th>#</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +45,10 @@ require_once("./student_service.php");
                     echo "<td>"; echo $s['batch']; echo "</td>";
                     echo "<td>"; echo $s['city']; echo "</td>";
                     echo "<td>"; echo $s['year']; echo "</td>";
+                    echo "<td>"; 
+                    echo "<a href=./edit_student.php?sId=".$s['id'].">edit,"."</a>";
+                    echo "<a href=?sId=".$s['id'].">Delete"."</a>";
+                    echo "</td>";
                     echo "</tr>";
                 }
             ?>
