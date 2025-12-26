@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
+namespace mysql_work;
+
 require_once("./config.php");
+require_once("./Student.php");
 
 $findAllQuery = $mysql_connection->prepare("select * from student");
 $findStudentQuery = $mysql_connection->prepare("select * from student where id = :id");
@@ -30,6 +33,23 @@ function getStudent(int $sId): mixed
         ':id' => $sId
     ]);
     return $findStudentQuery->fetch();
+}
+
+function getStudentModel(int $sId): Student
+{
+    global $findStudentQuery;
+    $findStudentQuery->execute([
+        ':id' => $sId
+    ]);
+    $student_result_set = $findStudentQuery->fetch();
+    return new Student(
+        $student_result_set['id'],
+        $student_result_set['name'],
+        $student_result_set['course'],
+        $student_result_set['batch'],
+        $student_result_set['city'],
+        $student_result_set['year']
+    );
 }
 
 function findAllStudent(): array

@@ -1,10 +1,17 @@
 <?php
 
+namespace mysql_work;
 require_once("./student_service.php");
+require_once("./Student.php");
 
 if(isset($_GET['sId'])){
     deleteStudent($_GET['sId']);
 }
+
+$s = getStudentModel(6);
+echo "<pre>";
+print_r($s);
+echo "</pre>";
 
 ?>
 

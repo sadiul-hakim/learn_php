@@ -1,3 +1,27 @@
+<?php
+
+namespace mysql_work;
+
+require_once("./student_service.php");
+
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $s_name   = trim($_POST["name"] ?? "");
+    $s_course = trim($_POST["course"] ?? "");
+    $s_batch  = trim($_POST["batch"] ?? "");
+    $s_city   = trim($_POST["city"] ?? "");
+    $s_year   = trim($_POST["year"] ?? "");
+
+    // No HTML or echo before header(), otherwise redirect will fail.
+    if ($s_name && $s_course && $s_batch && $s_city && $s_year) {
+        createStudent($s_name, $s_course, $s_batch, $s_city, $s_year);
+
+        // ✅ Redirect after successful insert
+        header("Location: student_view.php");
+        exit;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,24 +58,3 @@
 </body>
 
 </html>
-
-<?php
-require_once("./student_service.php");
-
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $s_name   = trim($_POST["name"] ?? "");
-    $s_course = trim($_POST["course"] ?? "");
-    $s_batch  = trim($_POST["batch"] ?? "");
-    $s_city   = trim($_POST["city"] ?? "");
-    $s_year   = trim($_POST["year"] ?? "");
-
-    // No HTML or echo before header(), otherwise redirect will fail.
-    if ($s_name && $s_course && $s_batch && $s_city && $s_year) {
-        createStudent($s_name, $s_course, $s_batch, $s_city, $s_year);
-
-        // ✅ Redirect after successful insert
-        header("Location: student_view.php");
-        exit;
-    }
-}
-?>

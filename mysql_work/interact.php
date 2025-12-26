@@ -1,6 +1,10 @@
 <?php
 
 // mysqli
+namespace mysql_work;
+use mysqli; // import statements
+use PDO;
+use PDOException;
 
 $con = new mysqli("localhost", "root", "", "learn");
 

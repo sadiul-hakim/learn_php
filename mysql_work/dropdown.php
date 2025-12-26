@@ -1,4 +1,5 @@
 <?php
+    namespace mysql_work;
     require_once("./student_service.php");
     $studentsDropdown = getStudentDropdown();
 ?>

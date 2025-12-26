@@ -1,5 +1,10 @@
 <?php
 
+namespace mysql_work;
+
+use PDO;
+use PDOException;
+
 $host = "localhost";
 $username = "root";
 $password = "";

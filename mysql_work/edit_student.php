@@ -1,5 +1,7 @@
 <?php
+namespace mysql_work;
 require_once("./student_service.php");
+
 
 $sId = $_GET['sId'];
 if (isset($sId)) {
