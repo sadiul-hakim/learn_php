@@ -2,11 +2,33 @@
 
 declare(strict_types=1);
 
+interface Danceable
+{
+    function dance(): void;
+}
+
+/**
+ * Trait
+ * You can think of a Trait as a require() for methods inside a class—but much cleaner and safer.
+ * Purpose: Code reuse across classes without inheritance.
+ * Can contain: Methods, properties, even abstract methods.
+ * Cannot: Be instantiated directly.
+ * Usage: `use` keyword inside a class.
+ */
+
+trait Eater
+{
+    public function eat(): void
+    {
+        echo "Eating";
+    }
+}
+
 // Inside class
 // If I access class property or non-static class method I should use $this ->
 // If I access const or static variable or static method I should use self ::
 // Outside class
-// If I access static properties or method I should use ClassName::PropertyOrMethodName
+// If I access const or static properties or method I should use ClassName::PropertyOrMethodName
 // If I access instance property or method I should use instance -> propertyOrMethodName
 
 enum Species: string
@@ -17,20 +39,30 @@ enum Species: string
     case HUMAN = 'human';
 }
 
-class Creature
+enum Gender: string
+{
+    case MALE = 'male';
+    case FEMALE = 'female';
+}
+
+// this Creature class is not instantiable as it is abstract
+abstract class Creature
 {
 
-    private string $name;
-    private Species $species;
+    protected string $name;
+    protected Species $species;
 
-    public function getName() : string{
-        return $this -> name;
+    protected function getName(): string
+    {
+        return $this->name;
     }
 
-    public function getSpecies() : Species{
-        return $this -> species;
+    protected function getSpecies(): Species
+    {
+        return $this->species;
     }
 
+    // Once class may have only one constructor
     public function __construct(
         string $name,
         Species $species
@@ -39,14 +71,14 @@ class Creature
         $this->species = $species;
     }
 
-    public function act(): void {
+    protected function act(): void
+    {
         // switch($this -> getSpecies())
-        switch($this -> species)
-        {
-            case Species::CAT :
+        switch ($this->species) {
+            case Species::CAT:
                 echo "Meu Meu walking";
                 break;
-            case Species::BIRD :
+            case Species::BIRD:
                 echo "Flying";
                 break;
             case Species::FISH:
@@ -59,7 +91,79 @@ class Creature
                 echo "Not Supported yet.";
         }
     }
+
+    abstract function makeSound(): void;
 }
 
-$hakim = new Creature("Hakim",Species::HUMAN);
-$hakim -> act();
+// $hakim = new Creature("Hakim", Species::HUMAN);
+
+// ❌ PHP does NOT support multiple inheritance of classes. But support multiple interface implementations
+// As Human is declared final, it is no longer inheritable
+final class Human extends Creature implements Danceable
+{
+
+    private int $age;
+    private string $profession;
+
+    private Gender $gender;
+
+    use Eater;
+
+    public function __construct(
+        string $name,
+        int $age,
+        string $profession,
+        Gender $gender
+    ) {
+        parent::__construct($name, Species::HUMAN);
+        $this->age = $age;
+        $this->profession = $profession;
+        $this->gender = $gender;
+    }
+
+    public function getAge(): int
+    {
+        return $this->age;
+    }
+    public function getProfession(): string
+    {
+        return $this->profession;
+    }
+    public function getGender(): Gender
+    {
+        return $this->gender;
+    }
+
+    public function makeSound(): void
+    {
+        echo "Humans are bad";
+    }
+
+    public function dance(): void
+    {
+        echo "Bullshit dance";
+    }
+}
+
+$rakib = new Human("Rakib", 26, "Web Developer", Gender::MALE);
+
+echo "<pre>";
+print_r($rakib);
+echo "</pre>";
+
+echo "<br/>";
+$rakib->makeSound();
+echo "<br/>";
+$rakib->eat();
+echo "<br/>";
+
+class HumanProperties
+{
+    public static string $NAME = "name";
+    public static string $AGE = "age";
+    public static string $PROFESSION = "profession";
+    public static string $GENDER = "gender";
+}
+
+echo "<br/>";
+echo HumanProperties::$NAME;
