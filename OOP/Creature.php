@@ -22,6 +22,20 @@ trait Eater
     {
         echo "Eating";
     }
+
+    public function useUtensil(): void
+    {
+        echo "Using Fork";
+    }
+}
+
+trait UtensilMaster
+{
+
+    public function useUtensil(): void
+    {
+        echo "Using Chopstick";
+    }
 }
 
 // Inside class
@@ -109,6 +123,13 @@ final class Human extends Creature implements Danceable
 
     use Eater;
 
+    use UtensilMaster{
+        // Use Eater useUtensil
+        Eater::useUtensil insteadof UtensilMaster;
+        // or changeName
+        UtensilMaster::useUtensil as useChopstick;
+    }
+
     public function __construct(
         string $name,
         int $age,
@@ -143,6 +164,13 @@ final class Human extends Creature implements Danceable
     {
         echo "Bullshit dance";
     }
+
+
+
+    // Overriding Trait method
+    // public function useUtensil(): void {
+    //     echo "Using Spoon";
+    // }
 }
 
 $rakib = new Human("Rakib", 26, "Web Developer", Gender::MALE);
@@ -155,6 +183,10 @@ echo "<br/>";
 $rakib->makeSound();
 echo "<br/>";
 $rakib->eat();
+echo "<br/>";
+$rakib->useUtensil();
+echo "<br/>";
+$rakib->useChopstick();
 echo "<br/>";
 
 class HumanProperties
