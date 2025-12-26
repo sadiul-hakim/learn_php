@@ -8,10 +8,7 @@ if (isset($sId)) {
         exit("Student is not found with id " . $sId);
     }
 }
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
