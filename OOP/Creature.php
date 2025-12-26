@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+// Inside class
+// If I access class property or non-static class method I should use $this ->
+// If I access const or static variable or static method I should use self ::
+// Outside class
+// If I access static properties or method I should use ClassName::PropertyOrMethodName
+// If I access instance property or method I should use instance -> propertyOrMethodName
+
 enum Species: string
 {
     case CAT = 'cat';
@@ -33,7 +40,7 @@ class Creature
     }
 
     public function act(): void {
-        // switch(self::getSpecies())
+        // switch($this -> getSpecies())
         switch($this -> species)
         {
             case Species::CAT :
