@@ -1,7 +1,3 @@
-Ah! this is a really important question—let’s break it **carefully**, because PHP sessions are often misunderstood.
-
----
-
 ## 1️⃣ How PHP Sessions Work
 
 When you use `$_SESSION` in PHP:
