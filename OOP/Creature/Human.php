@@ -6,11 +6,22 @@ namespace OOP\Creature;
 
 // As all required classes, interfaces, enums and Trait are in same namespace
 // I just need to require them. If they were in a different namespace I had to make use of `use`.
+// This is bad in raw php that even if the classes have same namespace we still need to require them. We need to use `composer` to avoid this. 
 require_once("./Gender.php");
 require_once("./Danceable.php");
 require_once("./Creature.php");
 require_once("./Eater.php");
 require_once("./UtensilMaster.php");
+
+// I think if we use composer, we would not need to auto load by ourself.
+// function autoLoad($class){
+//     echo "<pre>";
+//     print_r($class);
+//     echo "</pre>";
+//     require_once($class.'.php');
+// }
+
+// spl_autoload_register(__NAMESPACE__.'\autoLoad');
 
 // Inside class
 // If I access class property or non-static class method I should use $this ->
